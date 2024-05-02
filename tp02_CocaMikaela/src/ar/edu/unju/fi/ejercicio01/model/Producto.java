@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.ejercicio01.model;
 
+import java.util.*;
+
 public class Producto {
 	
 	private String codigo;
@@ -7,6 +9,8 @@ public class Producto {
 	private double precio_unitario;
 	private Origen_Fabricacion origen;
 	private Categoria categoria;
+	
+	Scanner sc = new Scanner(System.in);
 	
 	public Producto() {
 		// TODO Auto-generated constructor stub
@@ -69,6 +73,92 @@ public class Producto {
 	public enum Categoria{
 		TELEFONIA, INFORMATICA, ELECTROHOGAR, HERRAMIENTAS;
 	}
+	
+	public void crear(Producto producto) {
+		System.out.println("ingrese el codigo del producto: ");
+		producto.setCodigo(sc.next());
+		System.out.println("ingrese la descripcion del producto: ");
+		producto.setDescripcion(sc.nextLine());
+		System.out.println("ingrese el precio del producto: ");
+		producto.setPrecio_unitario(sc.nextDouble());
+		origen(producto);
+		categoria(producto);
+	}
+	
+	public void origen(Producto producto) {
+		int op;
+		do {
+		System.out.println("-----origen de fabricacion-----");
+		System.out.println("1- Argentina");
+		System.out.println("2- China");
+		System.out.println("3- Brasil");
+		System.out.println("4- Uruguay");
+		System.out.println("Elija una opcion: ");
+		op = sc.nextInt();
+		}
+		while(op>=1 && op<=4);
+		
+		switch(op)
+		{
+		case 1: 
+			producto.setOrigen(Origen_Fabricacion.ARGENTINA);
+		break;
+		
+		case 2:
+			producto.setOrigen(Origen_Fabricacion.BRASIL);
+		break;
+		
+		case 3:
+			producto.setOrigen(Origen_Fabricacion.CHINA);
+		break;
+		
+		case 4:
+			producto.setOrigen(Origen_Fabricacion.URUGUAY);
+		break;
+		
+		default:
+			System.out.println("Se produjo un error durante la seleccion de origen");
+		}
+		
+	}
+	
+	public void categoria(Producto producto) {
+		int op;
+		do {
+		System.out.println("-----Categoria-----");
+		System.out.println("1- Telefonia");
+		System.out.println("2- Informatica");
+		System.out.println("3- Electro hogar");
+		System.out.println("4- Herramientas");
+		System.out.println("Elija una opcion: ");
+		op = sc.nextInt();
+		}
+		while(op>=1 && op<=4);
+		
+		switch(op)
+		{
+		case 1: 
+			producto.setCategoria(Categoria.TELEFONIA);
+		break;
+		
+		case 2:
+			producto.setCategoria(Categoria.INFORMATICA);
+		break;
+		
+		case 3:
+			producto.setCategoria(Categoria.ELECTROHOGAR);
+		break;
+		
+		case 4:
+			producto.setCategoria(Categoria.HERRAMIENTAS);
+		break;
+		
+		default:
+			System.out.println("Se produjo un error durante la seleccion de categoria");
+		}
+	}
+	
+	
 
 	@Override
 	public String toString() {

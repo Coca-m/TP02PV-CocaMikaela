@@ -21,14 +21,19 @@ public class Main {
 		switch(op)
 		{
 		case 1: 
-			
+			Producto producto = new Producto();
+			producto.crear(producto);
+			lista.add(producto);
 		break;
 		
 		case 2:
-			
+			lista.forEach(prod-> System.out.println(prod));
 		break;
 		
 		case 3:
+			System.out.println("Ingrese el codigo del producto que desea consultar");
+			String codigo = sc.next();
+			
 			
 		break;
 		
